@@ -1,0 +1,20 @@
+.recommended {
+    margin-left: 17%;
+    margin-top: 2rem;
+}
+
+.recommended-title {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+}
+
+.recommended-btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.recommended-btns button {    
+    padding: .5rem 1rem;
+    border-radius: .5rem;
+    border: 1px solid #bbb;
+}

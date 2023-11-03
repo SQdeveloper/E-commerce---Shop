@@ -1,0 +1,38 @@
+.content-products {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(150px, 1fr));
+    margin-left: 17%;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-right: 2rem;
+}
+
+.card-info {
+    padding: .5rem .5rem;
+}
+
+.card-img {
+    width:100%;    
+    margin-bottom: 1rem;
+}
+
+.card-product {
+    border: 1px solid #dad8d8;
+    padding: .8rem .6rem;    
+    border-radius: .2rem;
+}
+
+.reviews {
+    display: flex;
+    gap: .5rem;
+    margin: .8rem 0;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.star {
+    color: rgb(255, 166, 0);
+}

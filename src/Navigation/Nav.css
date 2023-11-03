@@ -1,0 +1,28 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;    
+    border-bottom: 1px solid #ddd;
+    padding: .8rem 0;
+    align-items: center;
+}
+
+nav input {
+    background-color: #eee;
+    padding: .5rem .7rem;
+    border-radius: 1rem;
+    outline: none;    
+    border: none;;
+}
+
+.nav-options {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nav-icons {
+    color: #636262;
+    width: 20px;
+    height: 20px;
+}
