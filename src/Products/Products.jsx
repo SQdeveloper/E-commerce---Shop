@@ -1,12 +1,11 @@
 import React from 'react';
 import CardProduct from '../components/CardProduct';
-import data from '../db/data';
 import "./Products.css"
 
-const Products = () => {
+const Products = ({listProducts}) => {
     return (
         <ul className='content-products'>
-            {data.map((product, index)=>(                
+            {listProducts.map((product, index)=>(                
                 <CardProduct key={index} img={product.img} title={product.title} reviews={product.reviews} prevPrice={product.prevPrice} newPrice={product.newPrice}/>                
             ))}            
         </ul>

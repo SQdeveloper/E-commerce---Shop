@@ -1,10 +1,14 @@
 nav {
+    position: fixed;
     display: flex;
     justify-content: space-around;
     width: 100%;    
-    border-bottom: 1px solid #ddd;
-    padding: .8rem 0;
+    border-bottom: 1px solid #ddd;    
+    height: 3.8rem;
     align-items: center;
+    top: 0;
+    left: 0;
+    background-color: white;
 }
 
 nav input {

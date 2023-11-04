@@ -3,10 +3,10 @@ import {AiOutlineShoppingCart} from "react-icons/ai"
 import {BsPerson} from "react-icons/bs"
 import "./Nav.css";
 
-function Nav() {
+function Nav({handleSearch}) {
     return (        
         <nav>
-            <input type="text" placeholder='Enter your search shoes'/>
+            <input onChange={handleSearch} type="text" placeholder='Enter your search shoes'/>
 
             <div className="nav-options">
                 <AiOutlineHeart className="nav-icons"/>   
