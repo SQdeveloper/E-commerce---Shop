@@ -14,7 +14,14 @@ function App() {
       product.title.toLowerCase().includes(e.target.value.toLowerCase())
     )
 
-    console.log(newListProducts)
+    setListProducts(newListProducts);
+  }
+
+  const filteredCompany = (company)=>{
+    const newListProducts = data.filter(product =>
+      product.company.includes(company)
+    )
+    
     setListProducts(newListProducts);
   }
 
@@ -22,7 +29,7 @@ function App() {
     <>
       <Sidebar/>
       <Nav handleSearch={filteredSearch}/>
-      <Recommended/>
+      <Recommended handleFilterWithCompany={filteredCompany}/>
       <Products listProducts={listProducts}/>
     </>
   )

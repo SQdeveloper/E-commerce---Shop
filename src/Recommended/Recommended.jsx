@@ -1,16 +1,16 @@
 import React from 'react';
 import "./Recommended.css"
 
-function Recommended() {
+function Recommended({handleFilterWithCompany}) {
     return (
         <div className='recommended'>
             <h2 className='recommended-title'>Recommended</h2>
             <div className='recommended-btns'>
-                <button>All Products</button>
-                <button>Nike</button>
-                <button>Adidas</button>
-                <button>Puma</button>
-                <button>Vans</button>
+                <button onClick={()=>{handleFilterWithCompany("")}}>All Products</button>
+                <button onClick={()=>{handleFilterWithCompany("Nike")}}>Nike</button>
+                <button onClick={()=>{handleFilterWithCompany("Adidas")}}>Adidas</button>
+                <button onClick={()=>{handleFilterWithCompany("Puma")}}>Puma</button>
+                <button onClick={()=>{handleFilterWithCompany("Vans")}}>Vans</button>
             </div>
         </div>
     );
