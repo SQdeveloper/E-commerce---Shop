@@ -8,33 +8,68 @@ import data from './db/data'
 
 function App() {
   const [listProducts, setListProducts] = useState(data);
-  const [companySelected, setCompanySelected] = useState("all");
-  const [categorySelected, setCategorySelected] = useState("sneakers");
-  const [priceSelected, setPriceSelected] = useState(null);
-  const [colorSelected, setColorSelected] = useState(null);
+  const [companySelected, setCompanySelected] = useState("All");
+  const [categorySelected, setCategorySelected] = useState("All");
+  const [priceSelected, setPriceSelected] = useState("");
+  const [colorSelected, setColorSelected] = useState("");
+  let preList = data;
 
-  // Filter with Search Input
-  const filteredSearch = (e)=>{    
-    const newListProducts = data.filter(product =>       
-      product.title.toLowerCase().includes(e.target.value.toLowerCase())
+  // Filter with Category
+  const filteredCategory = ()=>{
+    if(categorySelected === "All") return;
+
+    preList = preList.filter(product =>
+    product.category.toLowerCase() === categorySelected
+    )    
+  }
+  
+  // Filter with Company
+  const filteredCompany = ()=>{           
+    if(companySelected === "All") return;    
+    
+    preList = preList.filter(product =>
+      product.company.toLowerCase() === companySelected.toLowerCase()  
     )
-
-    setListProducts(newListProducts);
   }
 
-  useEffect(()=>{
-    filteredRadioInput();      
-  }, [companySelected, categorySelected])
+  const filteredPrice = ()=>{           
+    if(priceSelected === "All") return;    
+    
+    const index = priceSelected.indexOf("-");
+    const limitInf = Number(priceSelected.slice(0,index));
+    const limitSup = Number(priceSelected.slice(index+1,priceSelected.length));    
+    
+    preList = preList.filter(product =>
+      Number(product.newPrice) >= limitInf && Number(product.newPrice) <= limitSup      
+    )
+  }
+  // Filter with Colors
+  const filteredColor = ()=>{           
+    if(colorSelected === "All") return;      
+    
+    preList = preList.filter(product =>
+      product.color.toLowerCase() === colorSelected.toLowerCase()
+    )
+  }
   
-  // Filter with Radio Input
-  const filteredRadioInput = ()=>{    
-    const newListProducts = data.filter(product =>
-      product.category.toLowerCase() === categorySelected &&
-      companySelected.includes(product.company)
-      // product.newPrice === priceSelected ||
-      // product.color === colorSeleted
+  // Filter with Search Input
+  const filteredSearch = (e)=>{    
+    preList = preList.filter(product =>       
+      product.title.toLowerCase().includes(e.target.value.toLowerCase())
     )    
-    setListProducts(newListProducts)
+  }
+
+  useEffect(()=>{  
+    filteredProducts()
+  }, [colorSelected, companySelected, categorySelected, priceSelected])
+
+  const filteredProducts = ()=> {      
+    setListProducts(data);
+    filteredCategory();
+    filteredCompany();
+    filteredPrice();
+    filteredColor();
+    setListProducts(preList);
   }
 
   return (

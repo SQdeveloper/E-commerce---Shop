@@ -5,13 +5,13 @@ const Category = ({setCategorySelected}) => {
     
     const changeCategorySelected = ()=>{        
         const inputActive = document.querySelector("input[name='categoryTest']:checked");
-        setCategorySelected(inputActive.value)
-        // console.log(inputActive.value])
+        setCategorySelected(inputActive.value)        
     }
 
     return (
         <div className="sidebar-content-filter">
             <h2 className='sidebar-title'>Category</h2>
+            <Input handleInput={changeCategorySelected} value="All" name="categoryTest" title="All"/>
             <Input handleInput={changeCategorySelected} value="sneakers" name="categoryTest" title="Sneakers"/>
             <Input handleInput={changeCategorySelected} value="flats" name="categoryTest" title="Flats"/>
             <Input handleInput={changeCategorySelected} value="sandals" name="categoryTest" title="Sandals"/>

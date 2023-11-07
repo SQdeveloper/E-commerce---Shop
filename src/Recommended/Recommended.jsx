@@ -6,7 +6,7 @@ function Recommended({setCompanySelected}) {
         <div className='recommended'>
             <h2 className='recommended-title'>Recommended</h2>
             <div className='recommended-btns'>
-                <button onClick={()=>{setCompanySelected("Nike Adidas Puma vans")}}>All Products</button>
+                <button onClick={()=>{setCompanySelected("All")}}>All Products</button>
                 <button onClick={()=>{setCompanySelected("Nike")}}>Nike</button>
                 <button onClick={()=>{setCompanySelected("Adidas")}}>Adidas</button>
                 <button onClick={()=>{setCompanySelected("Puma")}}>Puma</button>
