@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Input = ({handleInput, title, value, name}) => {
+const Input = ({handleInput, title, value, name}) => {         
+
     return (
         <label className="sidebar-label">
             <input onClick={handleInput} type="radio" value={value} name={name}/>

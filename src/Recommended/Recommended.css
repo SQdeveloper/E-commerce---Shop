@@ -17,4 +17,14 @@
     padding: .5rem 1rem;
     border-radius: .5rem;
     border: 1px solid #bbb;
+    transition: background-color .2s;
+}
+
+.recommended-btns button:hover {
+    background-color: #bbb;
+}
+
+.recommended-btns button.active {
+    background-color: black;
+    color: white;
 }

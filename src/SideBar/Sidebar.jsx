@@ -9,11 +9,14 @@ const Sidebar = ({setColorSelected, setPriceSelected, setCategorySelected}) => {
     return (
         <div className='sidebar'>
             <header className="sidebar-header">
-                <AiFillShop/>
+                <AiFillShop className='sidebar-header-logo'/>
             </header>
-            <Category setCategorySelected={setCategorySelected}/>
-            <Price setPriceSelected={setPriceSelected}/>
-            <Colors setColorSelected={setColorSelected}/>
+            <div className='sidebar-body'>
+                <Category setCategorySelected={setCategorySelected}/>
+                <Price setPriceSelected={setPriceSelected}/>
+                <Colors setColorSelected={setColorSelected}/>
+                
+            </div>
         </div>
     );
 };

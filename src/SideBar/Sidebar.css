@@ -4,21 +4,32 @@
     top: 0;
     border-right: 1px solid #bbb;
     height: 100%;
-    width: 15%;    
+    width: 15%;        
+    z-index: 3;        
+}
+
+.sidebar-body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    z-index: 3;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.sidebar-body::-webkit-scrollbar {
+    -webkit-appearance: none;
 }
 
 .sidebar-header {
-    height: 3.8rem;
     display: grid;
-    place-items: center;
+    width: 100%;
+    height: 3.8rem;        
+    place-items: center;    
 }
 
 .sidebar-content-filter {
-    margin-top: 1rem;
+    margin-top: 1rem;    
 }
 
 .sidebar-title {

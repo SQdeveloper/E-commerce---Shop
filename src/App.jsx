@@ -10,8 +10,9 @@ function App() {
   const [listProducts, setListProducts] = useState(data);
   const [companySelected, setCompanySelected] = useState("All");
   const [categorySelected, setCategorySelected] = useState("All");
-  const [priceSelected, setPriceSelected] = useState("");
-  const [colorSelected, setColorSelected] = useState("");
+  const [priceSelected, setPriceSelected] = useState("All");
+  const [colorSelected, setColorSelected] = useState("All");
+  const [Query, setQuery] = useState("");
   let preList = data;
 
   // Filter with Category
@@ -32,16 +33,24 @@ function App() {
     )
   }
 
+  // Filter with Price
   const filteredPrice = ()=>{           
     if(priceSelected === "All") return;    
     
     const index = priceSelected.indexOf("-");
-    const limitInf = Number(priceSelected.slice(0,index));
-    const limitSup = Number(priceSelected.slice(index+1,priceSelected.length));    
+    const limitInf = priceSelected.slice(0,index);
+    const limitSup = priceSelected.slice(index+1,priceSelected.length);    
     
-    preList = preList.filter(product =>
-      Number(product.newPrice) >= limitInf && Number(product.newPrice) <= limitSup      
-    )
+    if(limitSup === "over") {
+      preList = preList.filter(product =>
+        Number(product.newPrice) >= Number(limitInf)
+      )    
+      
+    }else {
+      preList = preList.filter(product =>
+        Number(product.newPrice) >= Number(limitInf) && Number(product.newPrice) <= Number(limitSup)
+      )    
+    }
   }
   // Filter with Colors
   const filteredColor = ()=>{           
@@ -53,29 +62,34 @@ function App() {
   }
   
   // Filter with Search Input
-  const filteredSearch = (e)=>{    
+  const filteredSearch = ()=>{    
     preList = preList.filter(product =>       
-      product.title.toLowerCase().includes(e.target.value.toLowerCase())
-    )    
+      product.title.toLowerCase().includes(Query.toLowerCase())
+    )
+  }
+
+  const updateQuery = (e)=>{
+    setQuery(e.target.value);
   }
 
   useEffect(()=>{  
     filteredProducts()
-  }, [colorSelected, companySelected, categorySelected, priceSelected])
+  }, [colorSelected, companySelected, Query, categorySelected, priceSelected])
 
   const filteredProducts = ()=> {      
     setListProducts(data);
-    filteredCategory();
+    filteredCategory(categorySelected);
     filteredCompany();
     filteredPrice();
     filteredColor();
+    filteredSearch();
     setListProducts(preList);
   }
 
   return (
     <>
       <Sidebar setCategorySelected={setCategorySelected} setPriceSelected={setPriceSelected} setColorSelected={setColorSelected}/>
-      <Nav handleSearch={filteredSearch}/>
+      <Nav handleSearch={updateQuery}/>
       <Recommended setCompanySelected={setCompanySelected}/>
       <Products listProducts={listProducts}/>
     </>
